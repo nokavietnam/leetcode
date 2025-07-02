@@ -30,27 +30,26 @@
 
 public class LeetCode76 {
     static class Solution {
+        // TC: O(n)
+        // SP: O(n)
         public String minWindow(String s, String t) {
-            int[] freqT = new int[57];
+            int[] freqT = new int[58];
             for (int i = 0; i < t.length(); ++i) {
                 ++freqT[t.charAt(i) - 'A'];
             }
-            StringBuilder sb = new StringBuilder();
             int minLength = Integer.MAX_VALUE;
             String ans = "";
             int left = 0;
             int n = s.length();
-            int[] freqCurrent = new int[57];
+            int[] freqCurrent = new int[58];
             for (int right = 0; right < n; ++right) {
-                sb.append(s.charAt(right));
                 ++freqCurrent[s.charAt(right) - 'A'];
                 while (isContain(freqT, freqCurrent)) {
                     if (right - left + 1 < minLength) {
-                        ans = sb.toString();
+                        ans = s.substring(left, right + 1);
                         minLength = right - left + 1;
                     }
                     --freqCurrent[s.charAt(left) - 'A'];
-                    sb.deleteCharAt(0);
                     ++left;
                 }
             }
@@ -58,7 +57,7 @@ public class LeetCode76 {
         }
 
         public boolean isContain(int[] freq, int[] s) {
-            for (int i = 0; i < 57; ++i) {
+            for (int i = 0; i < 58; ++i) {
                 if (s[i] < freq[i]) {
                     return false;
                 }

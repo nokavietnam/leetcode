@@ -18,6 +18,8 @@
 
 public class LeetCode643 {
     static class Solution {
+        // TC: O(n)
+        // SC: O(1)
         public double findMaxAverage(int[] nums, int k) {
             int n = nums.length;
             int current = 0;

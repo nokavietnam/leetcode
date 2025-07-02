@@ -25,6 +25,8 @@ import java.util.*;
 
 public class LeetCode3 {
     static class Solution {
+        // TC: O(n)
+        // SC: O(1) (or O(n) with Unicode)
         public int lengthOfLongestSubstring(String s) {
             int n = s.length();
             int begin = 0;
